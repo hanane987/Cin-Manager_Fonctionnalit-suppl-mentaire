@@ -1,18 +1,25 @@
 /*--- BASE STYLES ---*/
+:root {
+    --primary-color: #f6d200;
+    --background-color: #ededed;
+    --text-color: black;
+    --footer-color: white;
+    --header-color: black;
+}
+
 body,
 button,
 input,
 textarea {
-    color: black;
+    color: var(--text-color);
     font-family: "Asap", sans-serif;
     font-size: 16px;
     line-height: 1.8;
 }
 
 body {
-    background-color: #ededed;
+    background-color: var(--background-color);
     margin: 0;
-    font-family: "Asap", sans-serif;
 }
 
 img {
@@ -22,20 +29,20 @@ img {
 }
 
 footer {
-    background-color: black;
-    color: white;
+    background-color: var(--header-color);
+    color: var(--footer-color);
     text-align: center;
     padding: 1.5em;
     font-size: 1em;
 }
 
 header {
-    background-color: black;
+    background-color: var(--header-color);
 }
 
 .sidebar-right {
-    background-color: #ededed;
-    color: white;
+    background-color: var(--background-color);
+    color: var(--footer-color);
 }
 
 h1 {
@@ -76,57 +83,44 @@ p {
     font-size: 2em;
     font-weight: 300;
     text-align: center;
-    color: white;
+    color: var(--footer-color);
     text-transform: uppercase;
 }
 
 .site-description {
     text-align: center;
-    color: #f6d200;
+    color: var(--primary-color);
     font-size: 1.2em;
     margin-top: -0.8em;
     font-style: italic;
 }
 
 .main-menu {
-    color: black;
-    background-color: #f6d200;
+    color: var(--text-color);
+    background-color: var(--primary-color);
 }
 
 .main-menu ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .main-menu li a {
     text-decoration: none;
-    color: #000;
+    color: var(--text-color);
     font-size: 1.1em;
     font-weight: bold;
     padding: 0.6em 1em;
-    display: block;
-    transition: all 0.5s ease;
+    transition: background 0.5s ease, color 0.5s ease;
 }
 
 .main-menu li a:hover {
-    background-color: black;
-    color: #f6d200;
-}
-
-@media screen and (min-width: 810px) {
-    .main-menu ul {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        text-align: center;
-    }
-
-    .main-menu ul li {
-        flex-grow: 1;
-        flex-basis: auto;
-        flex-shrink: 0;
-    }
+    background-color: var(--header-color);
+    color: var(--primary-color);
 }
 
 @media screen and (min-width: 1120px) {
@@ -146,41 +140,44 @@ p {
 .post {
     background-color: white;
     margin-bottom: 1em;
-    border: 1px solid #ddd; /* Optional: Add border */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
-    overflow: hidden; /* Ensure rounded corners work with child elements */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
-/* Ensure all movie cards have the same size */
 .watch-card {
     display: flex;
-    flex-direction: column; /* Stack content vertically */
-    border-radius: 8px; /* Rounded corners */
-    overflow: hidden; /* Ensure content respects rounded corners */
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .post-content {
-    padding: 0 20px 20px; /* Adjust padding */
+    padding: 0 20px 20px;
 }
 
 .post-content h2 {
-    background-color: #f6d200;
-    color: black;
+    background-color: var(--primary-color);
+    color: var(--text-color);
     padding: 20px;
     text-align: center;
-    margin: 0 -20px 30px; /* Adjust margins to align with padding */
+    margin: 0 -20px 30px;
+}
+
+.posts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.post {
+    flex-basis: 100%;
 }
 
 @media screen and (min-width: 810px) {
-    .posts {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-
     .post {
-        flex-basis: 100%; /* Make each post take full width */
+        flex-basis: 49%;
     }
 }
 
@@ -203,16 +200,16 @@ p {
 /* START OF WATCH SECTION STYLES  */
 
 .section-header {
-    color: black;
+    color: var(--text-color);
     font-size: 3em;
     text-align: center;
 }
 
 .watch-content {
-    background-color: black;
-    color: white;
+    background-color: var(--header-color);
+    color: var(--footer-color);
     padding: 3em;
-    flex-grow: 1; /* Allow watch content to grow */
+    flex-grow: 1;
 }
 
 .watch-content h2 {
@@ -235,7 +232,7 @@ p {
 }
 
 .watch-content a {
-    color: white;
+    color: var(--footer-color);
     font-weight: bold;
 }
 
@@ -272,8 +269,8 @@ p {
     flex-flow: column;
     justify-content: center;
     text-align: center;
-    background-color: black;
-    color: white;
+    background-color: var(--header-color);
+    color: var(--footer-color);
     padding: 1em 2em;
     text-decoration: none;
     text-transform: capitalize;
@@ -323,9 +320,9 @@ p {
     flex-flow: column;
     justify-content: center;
     text-align: center;
-    background-color: #f6d200;
+    background-color: var(--primary-color);
     padding: 1em 2em;
-    color: black;
+    color: var(--text-color);
     font-size: 0.9em;
 }
 
@@ -411,7 +408,7 @@ p {
 
 .sidebar ul li a {
     text-decoration: none;
-    color: black;
+    color: var(--text-color);
     padding: 0.5em;
     display: block;
     border-radius: 8px;
@@ -419,53 +416,32 @@ p {
 }
 
 .sidebar ul li a:hover {
-    background: #f6d200;
-    color: black;
+    background: var(--primary-color);
+    color: var(--text-color);
 }
 
 /* END OF SIDEBAR-RIGHT SECTION STYLES  */
 
-/* START OF SEARCH FORM STYLES  */
+/* START OF SEARCH STYLES  */
 
-.search-form {
-    display: flex;
-    justify-content: space-between;
-    padding: 1em;
-    background-color: #f6d200;
-    border-radius: 8px;
+.search {
+    padding: 1.5em;
 }
 
-.search-form input[type="text"] {
-    flex-grow: 1;
+.search label {
+    display: block;
+}
+
+.search input[type="text"] {
+    border: 1px solid #aaa;
+    border-radius: 8px;
     padding: 0.5em;
-    border: none;
-    border-radius: 8px;
+    width: 100%;
+    transition: border 0.3s;
 }
 
-.search-form button {
-    background-color: black;
-    color: white;
-    padding: 0.5em 1em;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+.search input[type="text"]:focus {
+    border-color: var(--primary-color);
 }
 
-.search-form button:hover {
-    background-color: #333;
-}
-
-/* END OF SEARCH FORM STYLES  */
-
-/* START OF MOVIE CARD STYLES  */
-
-.movie-card {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 1em;
-    margin: 1em 0; /* Space between cards */
-}
-
-/* END OF MOVIE CARD STYLES  */
+/* END OF SEARCH STYLES  */
