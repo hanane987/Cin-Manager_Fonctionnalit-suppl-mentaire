@@ -1,42 +1,57 @@
-// src/components/FilmList.js
+// src/components/Films.js
 
 import React, { useEffect, useState } from 'react';
-import { fetchFilms } from '../services/filmService';
-import FilmCard from './FilmCard';  // Import FilmCard component
+import '../pages/Home.css'; // Optional: Add CSS for styling
 
-const FilmList = () => {
+const Films = () => {
   const [films, setFilms] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const getFilms = async () => {
+    const fetchFilms = async () => {
       try {
-        const data = await fetchFilms();
-        setFilms(data); // Store the films in state
+        const response = await fetch('http://localhost:3000/api/films'); // Ensure backend route is correct
+        if (!response.ok) {
+          throw new Error('Failed to fetch films');
+        }
+        const data = await response.json();
+        setFilms(data);
       } catch (error) {
-        setError("Failed to load films");
-      } finally {
-        setLoading(false);
+        setError(error.message);
       }
     };
-    
-    getFilms(); // Fetch films on component mount
+
+    fetchFilms();
   }, []);
 
-  if (loading) return <p>Loading films...</p>;
-  if (error) return <p>{error}</p>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
-    <div>
-      <h1>Available Films</h1>
-      <div className="film-list">
-        {films.map((film) => (
-          <FilmCard key={film._id} film={film} />
-        ))}
-      </div>
-    </div>
+    <section className="watch">
+      <h2 className="section-header">Watch Today</h2>
+      {films.length === 0 ? (
+        <p>No films available</p>
+      ) : (
+        films.map((film) => (
+          <div className="watch-card" key={film._id}>
+            <div className="watch-img">
+              <img src={film.imageUrl} alt={film.title} />
+            </div>
+            <div className="watch-content">
+              <h2>{film.title}</h2>
+              <div className="movie-info">
+                <span>{film.year}</span>
+                <span>{film.duration} min</span>
+                <span>{film.genre}</span>
+                <p className="movie-story">{film.description}</p>
+                <a href="#">Read More</a>
+              </div>
+            </div>
+          </div>
+        ))
+      )}
+    </section>
   );
 };
 
-export default FilmList;
+export default Films;

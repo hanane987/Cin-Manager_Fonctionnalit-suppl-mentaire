@@ -1,3 +1,16 @@
+// // src/pages/Home.js
+// import { Link } from 'react-router-dom';
+
+// function Home() {
+//   return (
+//     <div>
+//       <h1>Welcome to CinéManager</h1>
+//       <Link to="/films">View Films</Link>
+//     </div>
+//   );
+// }
+
+// export default Home;
 import React from 'react';
 import './Home.css';
 
