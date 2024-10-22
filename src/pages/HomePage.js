@@ -9,7 +9,7 @@ const HomePage = () => {
     <div className="outer-wrap">
       <header className="site-header">
         <div className="site-info">
-          <h1 className="site-title">THE MOVIE BOX</h1>
+          <h1 className="site-title">THE MOVIE BOXhhhh</h1>
           <p className="site-description">Sit back | relax | watch</p>
         </div>
         <nav className="main-menu">
@@ -20,17 +20,17 @@ const HomePage = () => {
       <div className="content-area">
         <main className="main-content-area">
           <section className="posts">
-            <h2 className="section-header">Now Showing</h2>
+          
             <FilmList />
           </section>
 
           <section className="watch">
-            <h2 className="section-header">Watch Today</h2>
+            <h2 className="section-header"></h2>
             {/* ... insert film cards here ... */}
           </section>
 
           <section className="gallery">
-            <h2 className="section-header">Movies Gallery</h2>
+            <h2 className="section-header"></h2>
             <div className="gallery-imgs">
               {/* Example Gallery Items */}
               <div className="gallery-img">

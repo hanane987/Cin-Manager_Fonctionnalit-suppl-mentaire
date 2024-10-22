@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# Cinema Streaming Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This project is an online streaming platform that allows clients to watch movies on-demand (VOD). The application is designed for both subscribers and basic account holders, offering features for movie streaming, ratings, comments, and user account management. The platform also includes an administrator dashboard for managing content and users.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+### Client Features
+- **Streaming Access**: Clients can watch movies on our platform if they have a subscribed account.
+- **Movie Ratings**: Clients can rate videos.
+- **Genre Filtering**: Clients can filter movies by genre.
+- **Movie Search**: Clients can search for movies by name.
+- **Comments**: Clients can leave comments on movies.
+- **Latest Movies**: Display the most recently added movies on the homepage.
+- **Related Movies**: On each movie detail page, display related films (same genre, similar names, or release dates).
+- **Account Management**: Clients can manage their accounts, including updating their name, date of birth, email, password, and profile picture from a single dashboard.
+- **Favorites Management**: Clients can manage their favorite movies from their dashboard.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Administrator Features
+- **Admin Dashboard**: An ergonomic dashboard for administrators to manage the platform.
+- **Video Uploading**: Administrators can upload videos.
+- **User Management**: Administrators can manage users (ban or activate accounts) and view metrics (number of clients, movies, visits, time spent on pages or videos, etc.).
+- **Video Visibility Settings**: Videos can be set to public, private, or scheduled for publication.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Payment Integration
+- **Payment Interface**: Create a mock-up interface for clients to enter their credit card information using ReactJS (frontend only).
 
-### `npm test`
+### Documentation
+- **API Documentation**: All endpoints will be documented using Swagger for easy reference and integration.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Storage
+- **MinIO Integration**: Use MinIO for storing videos, ensuring proper access management.
 
-### `npm run build`
+## Technology Stack
+- **Frontend**: ReactJS for building the user interface.
+- **Backend**: Node.js with Express for server-side logic.
+- **Database**: MongoDB for storing user data, movies, ratings, and comments.
+- **Storage**: MinIO for video storage.
+- **API Documentation**: Swagger for documenting API endpoints.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
+- Node.js (version >= 14.x)
+- MongoDB (running locally or hosted)
+- MinIO (running locally or hosted)
+- Docker (optional, if you prefer to run MinIO in a container)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Installation
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd cinema-streaming-platform

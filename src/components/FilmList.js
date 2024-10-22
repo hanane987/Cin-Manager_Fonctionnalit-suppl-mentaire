@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import '../pages/Home.css'; // Optional: Add CSS for styling
-
+import { Link } from 'react-router-dom';
 const Films = () => {
   const [films, setFilms] = useState([]);
   const [error, setError] = useState(null);
@@ -44,7 +44,7 @@ const Films = () => {
                 <span>{film.duration} min</span>
                 <span>{film.genre}</span>
                 <p className="movie-story">{film.description}</p>
-                <a href="#">Read More</a>
+                <Link to={`/film/${film._id}`}>Read More</Link> {/* Update this line */}
               </div>
             </div>
           </div>

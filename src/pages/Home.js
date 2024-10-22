@@ -19,7 +19,7 @@ const App = () => {
     <div className="outer-wrap">
       <header className="site-header">
         <div className="site-info">
-          <h1 className="site-title">THE MOVIE BOX</h1>
+          <h1 className="site-title">THE MOVIE BOXhanane</h1>
           <p className="site-description">Sit back | relax | watch</p>
         </div>
         <nav className="main-menu">
