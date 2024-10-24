@@ -13,7 +13,7 @@ const FilmDetails = () => {
     // Fetch the film details
     const fetchFilm = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/api/films/${id}`);
+        const response = await fetch(`http://localhost:3000/api/films/${id}`);
 
         // Check if the response is OK
         if (!response.ok) {
@@ -92,8 +92,9 @@ const FilmDetails = () => {
               {comments.length > 0 ? (
                 comments.map((comment) => (
                   <li key={comment._id}>
-                    <p><strong>{comment.author}:</strong> {comment.content}</p>
-                    <p><em>{new Date(comment.date).toLocaleString()}</em></p>
+                    <p><strong>User ID:</strong> {comment.utilisateur._id}</p>
+                    <p><strong>Comment:</strong> {comment.content}</p>
+                    <p><em>{new Date(comment.createdAt).toLocaleString()}</em></p>
                   </li>
                 ))
               ) : (

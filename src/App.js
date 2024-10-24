@@ -12,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/film/:id" element={<FilmDetails />} />
+      
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/ban-unban" element={<UserList />} /> {/* Fixed self-closing tag */}
         <Route path="*" element={<h1>404 - Route not found</h1>} />
