@@ -5,8 +5,9 @@ import '../pages/Home.css';
 const FilmDetails = () => {
   const { id } = useParams(); // Get the film ID from the URL
   const [film, setFilm] = useState(null);
-  const [seances, setSeances] = useState([]);
+  const [comments, setComments] = useState([]);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Fetch the film details
@@ -16,42 +17,55 @@ const FilmDetails = () => {
 
         // Check if the response is OK
         if (!response.ok) {
-          throw new Error('Failed to fetch film');
+          throw new Error(`Failed to fetch film: ${response.statusText}`);
         }
 
-        const data = await response.json();
-        setFilm(data); // Update the film state
+        const contentType = response.headers.get("Content-Type");
+        if (contentType && contentType.includes("application/json")) {
+          const data = await response.json();
+          setFilm(data); // Update the film state
+        } else {
+          throw new Error('Expected JSON, but received something else');
+        }
       } catch (error) {
         console.error('Error fetching film:', error);
         setError(error.message);
+      } finally {
+        setLoading(false); // End loading state
       }
     };
 
-    // Fetch the seances for the film
-    const fetchSeances = async () => {
+    // Fetch the comments for the film
+    const fetchComments = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/api/seances/film/${id}`);
+        const response = await fetch(`http://localhost:3001/api/comments/film/${id}`);
 
         // Check if the response is OK
         if (!response.ok) {
-          throw new Error('Failed to fetch seances');
+          throw new Error(`Failed to fetch comments: ${response.statusText}`);
         }
 
-        const data = await response.json();
-        setSeances(data); // Update the seances state
+        const contentType = response.headers.get("Content-Type");
+        if (contentType && contentType.includes("application/json")) {
+          const data = await response.json();
+          setComments(data); // Update the comments state
+        } else {
+          throw new Error('Expected JSON, but received something else');
+        }
       } catch (error) {
-        console.error('Error fetching seances:', error);
+        console.error('Error fetching comments:', error);
         setError(error.message);
       }
     };
 
-    // Call both functions to fetch film and seances
+    // Call both functions to fetch film and comments
     fetchFilm();
-    fetchSeances();
+    fetchComments();
   }, [id]); // Dependency on `id` from useParams()
 
+  // Handle loading and errors
+  if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
-  if (!film) return <div>Loading...</div>;
 
   return (
     <div className="film-details outer-wrap">
@@ -72,17 +86,19 @@ const FilmDetails = () => {
             <span className="film-detail">Duration: {film.duration} min</span><br />
             <span className="film-detail">Genre: {film.genre}</span>
 
-            {/* Seances Section */}
-            <h3>Seances</h3>
+            {/* Comments Section */}
+            <h3>Comments</h3>
             <ul>
-              {seances.map((seance) => (
-                <li key={seance._id}>
-                  <p>Date: {new Date(seance.horaire).toLocaleString()}</p>
-                  <p>Salle: {seance.salle.nom}</p>
-                  <p>Available Seats: {seance.placesDisponibles}</p>
-                  <p>Price: {seance.tarif} USD</p>
-                </li>
-              ))}
+              {comments.length > 0 ? (
+                comments.map((comment) => (
+                  <li key={comment._id}>
+                    <p><strong>{comment.author}:</strong> {comment.content}</p>
+                    <p><em>{new Date(comment.date).toLocaleString()}</em></p>
+                  </li>
+                ))
+              ) : (
+                <p>No comments yet.</p>
+              )}
             </ul>
           </section>
         </main>
